@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git & GitHub - Guía Completa</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-icon">&#60;/&#62;</span>
+                <span class="logo-text">Git & GitHub</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menú de navegación">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero" class="nav-link">Inicio</a></li>
+                <li><a href="#que-es-git" class="nav-link">¿Qué es Git?</a></li>
+                <li><a href="#que-es-github" class="nav-link">GitHub</a></li>
+                <li><a href="#metodologia" class="nav-link">Metodología</a></li>
+                <li><a href="#comandos" class="nav-link">Comandos</a></li>
+                <li><a href="#tips" class="nav-link">Tips</a></li>
+                <li><a href="#avanzado" class="nav-link">Avanzado</a></li>
+                <li><a href="#colaboracion" class="nav-link">Colaboración</a></li>
+                <li><a href="#autenticacion" class="nav-link">Autenticación</a></li>
+                <li><a href="#gitignore" class="nav-link">.gitignore</a></li>
+                <li><a href="#errores" class="nav-link">Errores</a></li>
+                <li><a href="#glosario" class="nav-link">Glosario</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+                <li><a href="#configuracion" class="nav-link">Configuración</a></li>
+                <li><a href="#integraciones" class="nav-link">Integraciones</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Guía Completa 2026</div>
+            <h1 class="hero-title">Domina <span class="highlight">Git</span> y <span class="highlight">GitHub</span></h1>
+            <p class="hero-subtitle">Todo lo que necesitas saber para gestionar tu código como un profesional</p>
+            <div class="hero-buttons">
+                <a href="#que-es-git" class="btn btn-primary">Comenzar</a>
+                <a href="#comandos" class="btn btn-secondary">Comandos</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="terminal">
+                <div class="terminal-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                </div>
+                <div class="terminal-body">
+                    <code>
+                        <span class="prompt">$</span> git init<br>
+                        <span class="comment">Initialized empty Git repository...</span><br>
+                        <span class="prompt">$</span> git add .<br>
+                        <span class="prompt">$</span> git commit -m "Initial commit"<br>
+                        <span class="success">[main abc1234] Initial commit</span>
+                    </code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ¿Qué es Git? -->
+    <section id="que-es-git" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Conceptos</span>
+                <h2 class="section-title">¿Qué es <span class="highlight">Git</span>?</h2>
+            </div>
+            <div class="content-card">
+                <p class="lead">Git es un <strong>sistema de control de versiones distribuido</strong> creado por Linus Torvalds en 2005.</p>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">&#128230;</div>
+                        <h3>Control de Versiones</h3>
+                        <p>Registra cambios en tus archivos a lo largo del tiempo, permitiéndote volver a versiones anteriores.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">&#127760;</div>
+                        <h3>Distribuido</h3>
+                        <p>Cada desarrollador tiene una copia completa del repositorio, permitiendo trabajo sin conexión.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">&#129309;</div>
+                        <h3>Colaboración</h3>
+                        <p>Múltiples personas pueden trabajar en el mismo proyecto sin conflictos.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">&#128640;</div>
+                        <h3>Ramas (Branches)</h3>
+                        <p>Crea líneas de desarrollo independientes para experimentar sin afectar el código principal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ¿Qué es GitHub? -->
+    <section id="que-es-github" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Plataforma</span>
+                <h2 class="section-title">¿Qué es <span class="highlight">GitHub</span>?</h2>
+            </div>
+            <div class="content-card">
+                <p class="lead">GitHub es una <strong>plataforma de hosting</strong> para repositorios Git que ofrece herramientas de colaboración, gestión de proyectos y código abierto.</p>
+                <div class="github-features">
+                    <div class="github-feature">
+                        <div class="gh-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        </div>
+                        <div class="gh-content">
+                            <h3>Repositorios Remotos</h3>
+                            <p>Almacena tu código en la nube y accede desde cualquier lugar.</p>
+                        </div>
+                    </div>
+                    <div class="github-feature">
+                        <div class="gh-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.998 4.5l-1.422-1.422-2.338 2.338L16.998 4.5zm-8.996 0l-2.338-2.338L3.5 4.5l2.502 2.502 2-2zm3 5.5h-6v2h6v-2zm-8-2h2v2h-2v-2zm2-2h-2v2h2v-2zm2 2h2v2h-2v-2zm-6 4h6v2h-6v-2zm4-4h2v2h-2v-2zm-2-2h2v2h-2v-2zm2 2h2v2h-2v-2zm2-2h2v2h-2v-2zm-4 2h2v2h-2v-2zm4-4h2v2h-2v-2zm-2-2h2v2h-2v-2zm2 2h2v2h-2v-2zm2-2h2v2h-2v-2z"/></svg>
+                        </div>
+                        <div class="gh-content">
+                            <h3>Pull Requests</h3>
+                            <p>Propón cambios y revisa código de tu equipo antes de fusionar.</p>
+                        </div>
+                    </div>
+                    <div class="github-feature">
+                        <div class="gh-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <div class="gh-content">
+                            <h3>Issues y Projects</h3>
+                            <p>Gestiona tareas, errores y organiza tu trabajo con tableros Kanban.</p>
+                        </div>
+                    </div>
+                    <div class="github-feature">
+                        <div class="gh-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+                        </div>
+                        <div class="gh-content">
+                            <h3>GitHub Actions</h3>
+                            <p>Automatiza flujos de trabajo CI/CD directamente en tu repositorio.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metodología -->
+    <section id="metodologia" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Workflow</span>
+                <h2 class="section-title">Metodología de <span class="highlight">Trabajo</span></h2>
+            </div>
+            <div class="content-card">
+                <p class="lead">Dos flujos de trabajo principales para gestionar el desarrollo de software de manera efectiva.</p>
+                
+                <div class="methodology-tabs">
+                    <button class="methodology-tab active" data-tab="gitflow">Git Flow</button>
+                    <button class="methodology-tab" data-tab="githubflow">GitHub Flow</button>
+                </div>
+                
+                <div class="methodology-content">
+                    <div class="methodology-panel active" id="gitflow">
+                        <h3>Git Flow</h3>
+                        <p>Ideal para proyectos con ciclos de release planificados y equipos grandes.</p>
+                        <div class="flow-diagram">
+                            <div class="flow-branches">
+                                <div class="branch-row">
+                                    <span class="branch-name main">main</span>
+                                    <div class="branch-line main-line"></div>
+                                    <span class="commit-dot"></span>
+                                    <span class="commit-dot"></span>
+                                    <span class="commit-dot"></span>
+                                </div>
+                                <div class="branch-row">
+                                    <span class="branch-name develop">develop</span>
+                                    <div class="branch-line develop-line"></div>
+                                    <span class="commit-dot"></span>
+                                    <span class="commit-dot"></span>
+                                    <span class="commit-dot"></span>
+                                    <span class="commit-dot"></span>
+                                </div>
+                                <div class="branch-row offset">
+                                    <span class="branch-name feature">feature/*</span>
+                                    <div class="branch-line feature-line"></div>
+                                    <span class="commit-dot"></span>
+                                    <span class="commit-dot"></span>
+                                </div>
+                                <div class="branch-row offset">
+                                    <span class="branch-name release">release/*</span>
+                                    <div class="branch-line release-line"></div>
+                                    <span class="commit-dot"></span>
+                                </div>
+                                <div class="branch-row offset">
+                                    <span class="branch-name hotfix">hotfix/*</span>
+                                    <div class="branch-line hotfix-line"></div>
+                                    <span class="commit-dot"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="branch-rules">
+                            <div class="rule-item">
+                                <code>main</code>
+                                <span>Solo código listo para producción</span>
+                            </div>
+                            <div class="rule-item">
+                                <code>develop</code>
+                                <span>Rama de integración, código en desarrollo</span>
+                            </div>
+                            <div class="rule-item">
+                                <code>feature/*</code>
+                                <span>Nueva funcionalidad (desde develop)</span>
+                            </div>
+                            <div class="rule-item">
+                                <code>release/*</code>
+                                <span>Preparación de release (desde develop)</span>
+                            </div>
+                            <div class="rule-item">
+                                <code>hotfix/*</code>
+                                <span>Correcciones urgentes (desde main)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="methodology-panel" id="githubflow">
+                        <h3>GitHub Flow</h3>
+                        <p>Flujo simple y efectivo para equipos que deployan frecuentemente (deploy continuo).</p>
+                        <div class="github-flow-steps">
+                            <div class="flow-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Crear Rama</h4>
+                                    <p>Crea una rama desde <code>main</code> con nombre descriptivo</p>
+                                    <code class="step-code">git checkout -b feature/nueva-funcionalidad</code>
+                                </div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Trabajar y Commits</h4>
+                                    <p>Haz cambios y commts frecuentes con mensajes claros</p>
+                                    <code class="step-code">git add . && git commit -m "Agregar nueva funcionalidad"</code>
+                                </div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Abrir Pull Request</h4>
+                                    <p>Publica tu rama y crea un PR para revisión</p>
+                                </div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>Revisión y Discusión</h4>
+                                    <p>El equipo revisa, comenta y solicita cambios si es necesario</p>
+                                </div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">5</div>
+                                <div class="step-content">
+                                    <h4>Merge a Main</h4>
+                                    <p>Fusiona la rama a main después de aprobada</p>
+                                    <code class="step-code">git checkout main && git merge feature/nueva-funcionalidad</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comandos Básicos -->
+    <section id="comandos" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Básico</span>
+                <h2 class="section-title">Comandos <span class="highlight">Básicos</span></h2>
+            </div>
+            <div class="content-card">
+                <p class="lead">Los comandos esenciales que todo desarrollador debe conocer para trabajar con Git.</p>
+                
+                <div class="commands-grid">
+                    <div class="command-category">
+                        <h3 class="category-title">Configuración Inicial</h3>
+                        <div class="commands-list">
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git config --global user.name "Tu Nombre"</code>
+                                </div>
+                                <p class="command-desc">Configura tu nombre de usuario global</p>
+                            </div>
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git config --global user.email "tu@email.com"</code>
+                                </div>
+                                <p class="command-desc">Configura tu email global</p>
+                            </div>
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git config --global init.defaultBranch main</code>
+                                </div>
+                                <p class="command-desc">Establece 'main' como rama por defecto</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="command-category">
+                        <h3 class="category-title">Iniciar Repositorio</h3>
+                        <div class="commands-list">
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git init</code>
+                                </div>
+                                <p class="command-desc">Inicializa un nuevo repositorio Git</p>
+                            </div>
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git clone &lt;url&gt;</code>
+                                </div>
+                                <p class="command-desc">Clona un repositorio remoto</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="command-category">
+                        <h3 class="category-title">Gestión de Cambios</h3>
+                        <div class="commands-list">
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git status</code>
+                                </div>
+                                <p class="command-desc">Muestra el estado del repositorio</p>
+                            </div>
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git add &lt;archivo&gt;</code>
+                                </div>
+                                <p class="command-desc">Añade archivos al staging</p>
+                            </div>
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git add .</code>
+                                </div>
+                                <p class="command-desc">Añade todos los cambios al staging</p>
+                            </div>
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git commit -m "mensaje"</code>
+                                </div>
+                                <p class="command-desc">Guarda los cambios con un mensaje</p>
+                            </div>
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git commit -am "mensaje"</code>
+                                </div>
+                                <p class="command-desc">Añade y commitea archivos rastreados</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="command-category">
+                        <h3 class="category-title">Historial y Ramas</h3>
+                        <div class="commands-list">
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git log</code>
+                                </div>
+                                <p class="command-desc">Muestra el historial de commits</p>
+                            </div>
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git log --oneline</code>
+                                </div>
+                                <p class="command-desc">Historial en una línea por commit</p>
+                            </div>
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git branch</code>
+                                </div>
+                                <p class="command-desc">Lista las ramas existentes</p>
+                            </div>
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git branch -M main</code>
+                                </div>
+                                <p class="command-desc">Renombra la rama actual a main</p>
+                            </div>
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git checkout -b &lt;rama&gt;</code>
+                                </div>
+                                <p class="command-desc">Crea y cambia a una nueva rama</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="command-category">
+                        <h3 class="category-title">Sincronización</h3>
+                        <div class="commands-list">
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git remote -v</code>
+                                </div>
+                                <p class="command-desc">Muestra los repositorios remotos</p>
+                            </div>
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git push -u origin main</code>
+                                </div>
+                                <p class="command-desc">Sube la rama main al remoto</p>
+                            </div>
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git pull</code>
+                                </div>
+                                <p class="command-desc">Descarga y fusiona cambios remotos</p>
+                            </div>
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git fetch</code>
+                                </div>
+                                <p class="command-desc">Descarga cambios sin fusionar</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="command-category">
+                        <h3 class="category-title">Operaciones Avanzadas</h3>
+                        <div class="commands-list">
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git diff</code>
+                                </div>
+                                <p class="command-desc">Muestra cambios no staged</p>
+                            </div>
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git diff --staged</code>
+                                </div>
+                                <p class="command-desc">Muestra cambios en staging</p>
+                            </div>
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git reset --soft HEAD~1</code>
+                                </div>
+                                <p class="command-desc">Deshace el último commit (conserva cambios)</p>
+                            </div>
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git stash</code>
+                                </div>
+                                <p class="command-desc">Guarda cambios temporalmente</p>
+                            </div>
+                            <div class="command-item">
+                                <div class="command-header">
+                                    <code>git merge &lt;rama&gt;</code>
+                                </div>
+                                <p class="command-desc">Fusiona una rama en la actual</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quick-commands">
+                    <h3>Comandos de Referencia Rápida</h3>
+                    <div class="quick-ref">
+                        <div class="ref-item">
+                            <span class="ref-label">Ver estado</span>
+                            <code>git status</code>
+                        </div>
+                        <div class="ref-item">
+                            <span class="ref-label">Añadir todo</span>
+                            <code>git add .</code>
+                        </div>
+                        <div class="ref-item">
+                            <span class="ref-label">Hacer commit</span>
+                            <code>git commit -m "msg"</code>
+                        </div>
+                        <div class="ref-item">
+                            <span class="ref-label">Subir cambios</span>
+                            <code>git push</code>
+                        </div>
+                        <div class="ref-item">
+                            <span class="ref-label">Bajar cambios</span>
+                            <code>git pull</code>
+                        </div>
+                        <div class="ref-item">
+                            <span class="ref-label">Nueva rama</span>
+                            <code>git checkout -b nom</code>
+                        </div>
+                        <div class="ref-item">
+                            <span class="ref-label">Ver historial</span>
+                            <code>git log --oneline</code>
+                        </div>
+                        <div class="ref-item">
+                            <span class="ref-label">Cambiar rama</span>
+                            <code>git checkout nom</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips y Recomendaciones -->
+    <section id="tips" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Best Practices</span>
+                <h2 class="section-title">Tips y <span class="highlight">Recomendaciones</span></h2>
+            </div>
+            <div class="content-card">
+                <div class="tips-container">
+                    <div class="tip-card">
+                        <div class="tip-icon">&#128221;</div>
+                        <h3>Commits Atómicos</h3>
+                        <p>Haz commits pequeños que representen un solo cambio. Es más fácil revertir y entender el historial.</p>
+                        <div class="tip-do-dont">
+                            <span class="do">&#10004; Hacer: Un cambio por commit</span>
+                            <span class="dont">&#10008; Evitar: Múltiples cambios juntos</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon">&#128172;</div>
+                        <h3>Mensajes Claros</h3>
+                        <p>Escribe mensajes descriptivos que expliquen el "qué" y "por qué" del cambio.</p>
+                        <div class="tip-example">
+                            <div class="example-bad">
+                                <strong>&#10008; Mal:</strong>
+                                <code>fix bug</code>
+                            </div>
+                            <div class="example-good">
+                                <strong>&#10004; Bien:</strong>
+                                <code>fix: Corregir error de validación en formulario de registro</code>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon">&#128274;</div>
+                        <h3>Nunca hacer Force Push</h3>
+                        <p>Evita <code>git push --force</code> en repositorios compartidos. Puedes sobrescribir el trabajo de otros.</p>
+                        <div class="tip-do-dont">
+                            <span class="do">&#10004; Usar: git pull --rebase</span>
+                            <span class="dont">&#10008; Evitar: git push --force</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon">&#127919;</div>
+                        <h3>Usar .gitignore</h3>
+                        <p>Excluye archivos innecesarios (node_modules, builds, secretos) del repositorio.</p>
+                        <div class="tip-do-dont">
+                            <span class="do">&#10004; Incluir: dependencias, binarios, configs</span>
+                            <span class="dont">&#10008; Evitar: archivos con passwords, keys</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon">&#128200;</div>
+                        <h3>Revisar antes de Push</h3>
+                        <p>Siempre revisa qué vas a subir usando <code>git status</code> y <code>git diff</code>.</p>
+                        <div class="tip-code">
+                            <code>git status && git diff --staged</code>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div name="tip-icon">&#128736;</div>
+                        <h3>Aliases Útiles</h3>
+                        <p>Crea alias para comandos frecuentes que ahorran tiempo.</p>
+                        <div class="tip-code">
+                            <code>git config --global alias.s "status"</code><br>
+                            <code>git config --global alias.lg "log --oneline --graph --all"</code><br>
+                            <code>git config --global alias.co "checkout"</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Autenticación -->
+    <section id="autenticacion" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Seguridad</span>
+                <h2 class="section-title">Métodos de <span class="highlight">Autenticación</span></h2>
+            </div>
+            <div class="content-card">
+                <p class="lead">GitHub ya no acepta contraseñas de cuenta para operaciones Git. Usa estos métodos recomendados.</p>
+                
+                <div class="auth-methods">
+                    <div class="auth-method">
+                        <div class="method-header">
+                            <span class="method-icon">&#128273;</span>
+                            <h3>SSH (Secure Shell)</h3>
+                        </div>
+                        <p>El método más seguro y recomendado. Usa un par de claves pública/privada.</p>
+                        
+                        <div class="auth-steps">
+                            <h4>Configuración:</h4>
+                            <div class="step-item">
+                                <span class="step-num">1</span>
+                                <div class="step-content">
+                                    <strong>Generar clave SSH</strong>
+                                    <code>ssh-keygen -t ed25519 -C "tu@email.com"</code>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <span class="step-num">2</span>
+                                <div class="step-content">
+                                    <strong>Copiar clave pública</strong>
+                                    <code>cat ~/.ssh/id_ed25519.pub</code>
+                                    <span class="step-hint">Copia el contenido mostrado</span>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <span class="step-num">3</span>
+                                <div class="step-content">
+                                    <strong>Agregar en GitHub</strong>
+                                    <p>Settings → SSH and GPG keys → New SSH key</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <span class="step-num">4</span>
+                                <div class="step-content">
+                                    <strong>Configurar remoto SSH</strong>
+                                    <code>git remote set-url origin git@github.com:usuario/repo.git</code>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="method-pros-cons">
+                            <div class="pros">
+                                <strong>&#10004; Ventajas:</strong>
+                                <ul>
+                                    <li>Sin necesidad de ingresar credenciales</li>
+                                    <li>Muy seguro</li>
+                                    <li>Una vez configurado, funciona siempre</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="auth-method">
+                        <div class="method-header">
+                            <span class="method-icon">&#128273;</span>
+                            <h3>Token de Acceso Personal (Classic)</h3>
+                        </div>
+                        <p>Método alternativo usando tokens generados desde GitHub.</p>
+                        
+                        <div class="auth-steps">
+                            <h4>Generar Token:</h4>
+                            <div class="step-item">
+                                <span class="step-num">1</span>
+                                <div class="step-content">
+                                    <strong>Ir a Settings</strong>
+                                    <p>Settings → Developer settings → Personal access tokens → Tokens (classic)</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <span class="step-num">2</span>
+                                <div class="step-content">
+                                    <strong>Crear nuevo token</strong>
+                                    <p>Generate new token (classic)</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <span class="step-num">3</span>
+                                <div class="step-content">
+                                    <strong>Configurar permisos</strong>
+                                    <p>Selecciona "repo" para acceso completo</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <span class="step-num">4</span>
+                                <div class="step-content">
+                                    <strong>Usar el token</strong>
+                                    <p>Cuando Git pida credentials, usa el token como contraseña</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="method-pros-cons">
+                            <div class="pros">
+                                <strong>&#10004; Ventajas:</strong>
+                                <ul>
+                                    <li>Fácil de generar</li>
+                                    <li>Puedes configurar permisos específicos</li>
+                                    <li>Puedes revocar tokens anytime</li>
+                                </ul>
+                            </div>
+                            <div class="cons">
+                                <strong>&#10008; Desventajas:</strong>
+                                <ul>
+                                    <li>Debes copiar y pegar el token</li>
+                                    <li>Expira eventualmente</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="auth-method">
+                        <div class="method-header">
+                            <span class="method-icon">&#128273;</span>
+                            <h3>GitHub CLI</h3>
+                        </div>
+                        <p>La forma más moderna usando la CLI de GitHub.</p>
+                        
+                        <div class="auth-steps">
+                            <h4>Autenticación con gh:</h4>
+                            <div class="step-item">
+                                <span class="step-num">1</span>
+                                <div class="step-content">
+                                    <strong>Instalar GitHub CLI</strong>
+                                    <code>brew install gh</code> (macOS)<br>
+                                    <code>winget install GitHub.cli</code> (Windows)
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <span class="step-num">2</span>
+                                <div class="step-content">
+                                    <strong>Iniciar sesión</strong>
+                                    <code>gh auth login</code>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <span class="step-num">3</span>
+                                <div class="step-content">
+                                    <strong>Seleccionar opciones</strong>
+                                    <p>Follow prompts: GitHub.com → SSH → Paste SSH key</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="method-pros-cons">
+                            <div class="pros">
+                                <strong>&#10004; Ventajas:</strong>
+                                <ul>
+                                    <li>Autenticaciónweb interactiva</li>
+                                    <li>Maneja múltiples cuentas</li>
+                                    <li>Comandos directamente desde terminal</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="auth-warning">
+                    <strong>&#9888; Importante:</strong> GitHub eliminó la autenticación con contraseña de cuenta desde 2021. Debes usar uno de los métodos acima.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- .gitignore -->
+    <section id="gitignore" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Archivo Especial</span>
+                <h2 class="section-title">Archivo <span class="highlight">.gitignore</span></h2>
+            </div>
+            <div class="content-card">
+                <p class="lead">El archivo .gitignore especifica qué archivos y carpetas deben ser ignorados por Git.</p>
+                
+                <div class="gitignore-section">
+                    <h3>¿Qué es?</h3>
+                    <p>Un archivo de texto que le dice a Git qué archivos o carpetas <strong>no</strong> debe rastrear. Esencial para:</p>
+                    <ul class="gitignore-reasons">
+                        <li>Evitar subir archivos sensibles (passwords, API keys)</li>
+                        <li>Ignorar dependencias instaladas (node_modules, vendor)</li>
+                        <li>Excluir archivos decompilación (.class, .pyc, .exe)</li>
+                        <li>Mantener limpio el repositorio</li>
+                    </ul>
+                </div>
+                
+                <div class="gitignore-examples">
+                    <h3>Ejemplos Prácticos</h3>
+                    
+                    <div class="example-block">
+                        <h4>Proyecto Node.js</h4>
+                        <div class="code-block">
+                            <pre><code># Dependencias
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos de ambiente
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+dist/
+build/
+coverage/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="example-block">
+                        <h4>Proyecto Python</h4>
+                        <div class="code-block">
+                            <pre><code># Byte-compiled
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Distribution
+dist/
+build/
+*.egg-info/
+
+# IDEs
+.vscode/
+.idea/
+
+# Environment
+.env
+.env.local</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="example-block">
+                        <h4>Proyecto General (Múltiples lenguajes)</h4>
+                        <div class="code-block">
+                            <pre><code># OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Secrets
+*.pem
+*.key
+config/secrets.yml
+
+# Dependencies
+node_modules/
+vendor/
+bower_components/
+
+# Build
+dist/
+build/
+out/</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gitignore-tips">
+                    <h3>&#128161; Tips</h3>
+                    <ul>
+                        <li><strong>Usa templates:</strong> GitHub ofrece <a href="https://github.com/github/gitignore" target="_blank">.gitignore templates</a> por lenguaje</li>
+                        <li><strong>Orden importa:</strong> Las reglas más específicas deben estar al final</li>
+                        <li><strong>Repo global:</strong> Crea un .gitignore global para tu usuario:
+                            <code>git config --global core.excludesFile ~/.gitignore_global</code>
+                        </li>
+                        <li><strong> Ya tracked?:</strong> Si un archivo ya está rastreado, agrégalo a .gitignore y luego:
+                            <code>git rm --cached archivo</code>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Configuración de Cuentas -->
+    <section id="configuracion" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Setup</span>
+                <h2 class="section-title">Configuración de <span class="highlight">Cuentas</span></h2>
+            </div>
+            <div class="content-card">
+                <p class="lead">Configura tu entorno de desarrollo Git desde cero.</p>
+                
+                <div class="config-steps">
+                    <div class="config-step">
+                        <div class="step-header">
+                            <span class="step-num">01</span>
+                            <h3>Instalar Git</h3>
+                        </div>
+                        <div class="step-body">
+                            <div class="install-option">
+                                <h4>macOS</h4>
+                                <code>brew install git</code>
+                            </div>
+                            <div class="install-option">
+                                <h4>Linux (Ubuntu/Debian)</h4>
+                                <code>sudo apt update && sudo apt install git</code>
+                            </div>
+                            <div class="install-option">
+                                <h4>Windows</h4>
+                                <p>Descarga desde <a href="https://git-scm.com" target="_blank">git-scm.com</a></p>
+                            </div>
+                            <div class="install-option">
+                                <h4>Verificar instalación</h4>
+                                <code>git --version</code>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="config-step">
+                        <div class="step-header">
+                            <span class="step-num">02</span>
+                            <h3>Configurar Usuario</h3>
+                        </div>
+                        <div class="step-body">
+                            <div class="config-code">
+                                <code># Tu nombre
+git config --global user.name "Tu Nombre"
+
+# Tu email (debe ser el mismo que GitHub)
+git config --global user.email "tu@email.com"
+
+# Editor por defecto (VS Code)
+git config --global core.editor "code --wait"
+
+# Rama por defecto
+git config --global init.defaultBranch main</code>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="config-step">
+                        <div class="step-header">
+                            <span class="step-num">03</span>
+                            <h3>Crear Repositorio Local</h3>
+                        </div>
+                        <div class="step-body">
+                            <div class="config-code">
+                                <code># Crear carpeta del proyecto
+mkdir mi-proyecto
+cd mi-proyecto
+
+# Inicializar Git
+git init
+
+# Crear archivo README
+echo "# Mi Proyecto" > README.md
+git add .
+git commit -m "Initial commit"</code>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="config-step">
+                        <div class="step-header">
+                            <span class="step-num">04</span>
+                            <h3>Conectar con GitHub</h3>
+                        </div>
+                        <div class="step-body">
+                            <div class="config-code">
+                                <code># Crear repositorio en GitHub (web)
+# Luego conectar:
+
+git remote add origin https://github.com/usuario/repo.git
+git push -u origin main</code>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="config-step">
+                        <div class="step-header">
+                            <span class="step-num">05</span>
+                            <h3>Comandos Útiles de Configuración</h3>
+                        </div>
+                        <div class="step-body">
+                            <div class="config-code">
+                                <code># Ver toda la configuración
+git config --list
+
+# Ver configuración específica
+git config user.name
+git config user.email
+
+# Configurar alias útiles
+git config --global alias.s "status"
+git config --global alias.lg "log --oneline --graph"
+git config --global alias.co "checkout"
+git config --global alias.br "branch"
+git config --global alias.st "stash"
+
+# Configurar colores
+git config --global color.ui auto</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integraciones -->
+    <section id="integraciones" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Ecosistema</span>
+                <h2 class="section-title"><span class="highlight">Integraciones</span></h2>
+            </div>
+            <div class="content-card">
+                <p class="lead">Herramientas y servicios que se integran con Git y GitHub.</p>
+                
+                <div class="integrations-grid">
+                    <div class="integration-card">
+                        <div class="integration-icon" style="background: #0078D4;">
+                            <svg viewBox="0 0 24 24" fill="white"><path d="M0 0h12v12H0zM12 0h12v12H12zM0 12h12v12H0zM12 12h12v12H12z"/></svg>
+                        </div>
+                        <h3>VS Code</h3>
+                        <p>Integración nativa con Git. Panel de control de versiones, merge conflicts y más.</p>
+                    </div>
+                    
+                    <div class="integration-card">
+                        <div class="integration-icon" style="background: #333;">
+                            <svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <h3>JetBrains IDEs</h3>
+                        <p>WebStorm, IntelliJ, PyCharm tienen integración profunda con Git y GitHub.</p>
+                    </div>
+                    
+                    <div class="integration-card">
+                        <div class="integration-icon" style="background: #F1502F;">
+                            <span style="color: white; font-weight: bold;">F</span>
+                        </div>
+                        <h3>GitKraken</h3>
+                        <p>Cliente Git visual con interfaz intuitiva para gestionar repositorios.</p>
+                    </div>
+                    
+                    <div class="integration-card">
+                        <div class="integration-icon" style="background: #4A154B;">
+                            <span style="color: white; font-weight: bold;">S</span>
+                        </div>
+                        <h3>Slack</h3>
+                        <p>Recibe notificaciones de PRs, issues y deployments directamente en Slack.</p>
+                    </div>
+                    
+                    <div class="integration-card">
+                        <div class="integration-icon" style="background: #FF6C37;">
+                            <span style="color: white; font-weight: bold;">H</span>
+                        </div>
+                        <h3>Heroku</h3>
+                        <p>Deploy automático desde GitHub. Cada push puede activar un deployment.</p>
+                    </div>
+                    
+                    <div class="integration-card">
+                        <div class="integration-icon" style="background: #326CE5;">
+                            <span style="color: white; font-weight: bold;">K</span>
+                        </div>
+                        <h3>Kubernetes</h3>
+                        <p>CI/CD con GitOps. Define tu infraestructura como código en Git.</p>
+                    </div>
+                    
+                    <div class="integration-card">
+                        <div class="integration-icon" style="background: #333;">
+                            <span style="color: white; font-weight: bold;">C</span>
+                        </div>
+                        <h3>CircleCI</h3>
+                        <p>Pipeline de CI/CD integrado con GitHub. Runs tests en cada PR.</p>
+                    </div>
+                    
+                    <div class="integration-card">
+                        <div class="integration-icon" style="background: #FF6C00;">
+                            <span style="color: white; font-weight: bold;">V</span>
+                        </div>
+                        <h3>Vercel</h3>
+                        <p>Deploy continuo para proyectos frontend. Conecta tu repo y deploy automático.</p>
+                    </div>
+                </div>
+                
+                <div class="ci-cd-section">
+                    <h3>CI/CD con GitHub Actions</h3>
+                    <p>GitHub Actions te permite automatizar flujos de trabajo directamente en GitHub.</p>
+                    <div class="workflow-example">
+                        <h4>Ejemplo: Pipeline de CI</h4>
+                        <div class="code-block">
+                            <pre><code>name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm test</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comandos Avanzados -->
+    <section id="avanzado" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Experto</span>
+                <h2 class="section-title">Comandos <span class="highlight">Avanzados</span></h2>
+            </div>
+            <div class="content-card">
+                <p class="lead">Técnicas y comandos avanzados para управления tu historial y flujo de trabajo.</p>
+                
+                <div class="advanced-grid">
+                    <div class="advanced-item">
+                        <h3>Rebase</h3>
+                        <p>Reescribe el historial de commits aplicando los cambios sobre otra rama.</p>
+                        <div class="advanced-code">
+                            <code># Rebase de feature sobre main</code>
+                            <code>git checkout feature/nueva-func</code>
+                            <code>git rebase main</code>
+                        </div>
+                        <div class="advanced-warning">
+                            &#9888; Nunca hacer rebase en ramas públicas
+                        </div>
+                    </div>
+                    
+                    <div class="advanced-item">
+                        <h3>Cherry-pick</h3>
+                        <p>Aplica commits específicos de una rama a otra.</p>
+                        <div class="advanced-code">
+                            <code># Aplicar un commit específico</code>
+                            <code>git cherry-pick abc1234</code>
+                            <code># Aplicar múltiples commits</code>
+                            <code>git cherry-pick abc1234 def5678</code>
+                        </div>
+                    </div>
+                    
+                    <div class="advanced-item">
+                        <h3>Reflog</h3>
+                        <p>Historial de todas las referencias (útil para recuperar cambios "perdidos").</p>
+                        <div class="advanced-code">
+                            <code># Ver historial de referencias</code>
+                            <code>git reflog</code>
+                            <code># Recuperar estado anterior</code>
+                            <code>git checkout HEAD@{2}</code>
+                        </div>
+                    </div>
+                    
+                    <div class="advanced-item">
+                        <h3>Tags (Etiquetas)</h3>
+                        <p>Marcadores de versiones específicas en el historial.</p>
+                        <div class="advanced-code">
+                            <code># Tag lightweight</code>
+                            <code>git tag v1.0.0</code>
+                            <code># Tag anotado (recomendado)</code>
+                            <code>git tag -a v1.0.0 -m "Versión 1.0.0"</code>
+                            <code># Subir tags al remoto</code>
+                            <code>git push origin v1.0.0</code>
+                        </div>
+                    </div>
+                    
+                    <div class="advanced-item">
+                        <h3>Git Hooks</h3>
+                        <p>Scripts que se ejecutan en momentos específicos del flujo de Git.</p>
+                        <div class="advanced-code">
+                            <code># Ubicación de hooks</code>
+                            <code>.git/hooks/</code>
+                            <code># Hook pre-commit ejemplo</code>
+                            <code>#!/bin/bash</code>
+                            <code>npm test</code>
+                        </div>
+                        <div class="advanced-tip">
+                            &#128161; Usa husky para gestionar hooks en proyectos
+                        </div>
+                    </div>
+                    
+                    <div class="advanced-item">
+                        <h3>Worktree</h3>
+                        <p>Trabaja en múltiples ramas simultáneamente en diferentes carpetas.</p>
+                        <div class="advanced-code">
+                            <code># Crear nuevo worktree</code>
+                            <code>git worktree add ../rama-nueva main</code>
+                            <code># Listar worktrees</code>
+                            <code>git worktree list</code>
+                            <code># Eliminar worktree</code>
+                            <code>git worktree remove ../rama-nueva</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Colaboración Open Source -->
+    <section id="colaboracion" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">OSS</span>
+                <h2 class="section-title">Colaboración <span class="highlight">Open Source</span></h2>
+            </div>
+            <div class="content-card">
+                <p class="lead">Cómo contribuir a proyectos externos y manejar repositorios forked.</p>
+                
+                <div class="oss-workflow">
+                    <div class="oss-step">
+                        <div class="oss-step-num">1</div>
+                        <div class="oss-step-content">
+                            <h4>Fork del Repositorio</h4>
+                            <p>Haz clic en el botón "Fork" en GitHub para crear tu copia del repositorio.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="oss-step">
+                        <div class="oss-step-num">2</div>
+                        <div class="oss-step-content">
+                            <h4>Clona tu Fork</h4>
+                            <code>git clone https://github.com/tu-usuario/repo.git</code>
+                        </div>
+                    </div>
+                    
+                    <div class="oss-step">
+                        <div class="oss-step-num">3</div>
+                        <div class="oss-step-content">
+                            <h4>Configura Upstream</h4>
+                            <code>git remote add upstream https://github.com/original/repo.git</code>
+                        </div>
+                    </div>
+                    
+                    <div class="oss-step">
+                        <div class="oss-step-num">4</div>
+                        <div class="oss-step-content">
+                            <h4>Crea Rama para Cambios</h4>
+                            <code>git checkout -b fix/descripcion-del-fix</code>
+                        </div>
+                    </div>
+                    
+                    <div class="oss-step">
+                        <div class="oss-step-num">5</div>
+                        <div class="oss-step-content">
+                            <h4>Haz Cambios y Commit</h4>
+                            <code>git add . && git commit -m "Fix: descripción"</code>
+                        </div>
+                    </div>
+                    
+                    <div class="oss-step">
+                        <div class="oss-step-num">6</div>
+                        <div class="oss-step-content">
+                            <h4>Push a tu Fork</h4>
+                            <code>git push origin fix/descripcion-del-fix</code>
+                        </div>
+                    </div>
+                    
+                    <div class="oss-step">
+                        <div class="oss-step-num">7</div>
+                        <div class="oss-step-content">
+                            <h4>Crea Pull Request</h4>
+                            <p>En GitHub, pulsa "Compare & pull request" desde tu fork.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sync-fork">
+                    <h3>&#128260; Sincronizar Fork con Upstream</h3>
+                    <div class="sync-steps">
+                        <div class="sync-step">
+                            <code>git fetch upstream</code>
+                            <span>Descargar cambios del repo original</span>
+                        </div>
+                        <div class="sync-step">
+                            <code>git checkout main</code>
+                            <span>Ir a tu rama main</span>
+                        </div>
+                        <div class="sync-step">
+                            <code>git merge upstream/main</code>
+                            <span>Fusionar cambios</span>
+                        </div>
+                        <div class="sync-step">
+                            <code>git push origin main</code>
+                            <span>Subir a tu fork</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Errores Comunes -->
+    <section id="errores" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Troubleshooting</span>
+                <h2 class="section-title">Errores <span class="highlight">Comunes</span> y Soluciones</h2>
+            </div>
+            <div class="content-card">
+                <div class="errors-grid">
+                    <div class="error-card">
+                        <div class="error-title">&#9888; "detached HEAD"</div>
+                        <p class="error-desc">Estás en un commit específico, no en una rama.</p>
+                        <div class="error-solution">
+                            <strong>Solución:</strong>
+                            <code>git checkout main  # Volver a main</code>
+                            <code>git checkout -b nueva-rama  # Crear rama</code>
+                        </div>
+                    </div>
+                    
+                    <div class="error-card">
+                        <div class="error-title">&#9888; "Merge Conflict"</div>
+                        <p class="error-desc">Git no puede fusionar automáticamente los cambios.</p>
+                        <div class="error-solution">
+                            <strong>Solución:</strong>
+                            <code># 1. Abre los archivos en conflicto</code>
+                            <code># 2. Resuelve los conflictos manualmente</code>
+                            <code># 3. git add archivo-resuelto</code>
+                            <code># 4. git commit</code>
+                        </div>
+                    </div>
+                    
+                    <div class="error-card">
+                        <div class="error-title">&#9888; "refusing to merge unrelated histories"</div>
+                        <p class="error-desc">El repositorio local y remoto tienen historiales diferentes.</p>
+                        <div class="error-solution">
+                            <strong>Solución:</strong>
+                            <code>git pull origin main --allow-unrelated-histories</code>
+                        </div>
+                    </div>
+                    
+                    <div class="error-card">
+                        <div class="error-title">&#9888; "push rejected"</div>
+                        <p class="error-desc">Tu rama está detrás de la remota.</p>
+                        <div class="error-solution">
+                            <strong>Solución:</strong>
+                            <code>git pull --rebase origin main</code>
+                            <code>git push origin main</code>
+                        </div>
+                    </div>
+                    
+                    <div class="error-card">
+                        <div class="error-title">&#9888; "fatal: bad object"</div>
+                        <p class="error-desc">Archivo .git corrupto o descargado incorrectamente.</p>
+                        <div class="error-solution">
+                            <strong>Solución:</strong>
+                            <code>git fsck --full</code>
+                            <code># Si no funciona, reclonar el repo</code>
+                        </div>
+                    </div>
+                    
+                    <div class="error-card">
+                        <div class="error-title">&#9888; "error: pathspec did not match"</div>
+                        <p class="error-desc">La rama o archivo especificado no existe.</p>
+                        <div class="error-solution">
+                            <strong>Solución:</strong>
+                            <code>git branch -a  # Ver ramas disponibles</code>
+                            <code>git fetch --all  # Actualizar refs</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Glosario -->
+    <section id="glosario" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Referencia</span>
+                <h2 class="section-title">Glosario de <span class="highlight">Términos</span></h2>
+            </div>
+            <div class="content-card">
+                <div class="glossary-grid">
+                    <div class="glossary-item">
+                        <code>Repository</code>
+                        <p>Directorio que contiene el proyecto y su historial de versiones.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <code>Commit</code>
+                        <p>Snapshot de los archivos en un momento específico.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <code>Branch</code>
+                        <p>Línea de desarrollo independiente.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <code>Merge</code>
+                        <p>Fusionar cambios de una rama a otra.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <code>Rebase</code>
+                        <p>Reescribir historial aplicando commits sobre otra base.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <code>HEAD</code>
+                        <p>Puntero al commit/rama actual.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <code>Origin</code>
+                        <p>Nombre por defecto del repositorio remoto.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <code>Upstream</code>
+                        <p>Repositorio original del que hiciste fork.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <code>Staging Area</code>
+                        <p>Área donde se preparan los archivos para el commit.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <code>Working Directory</code>
+                        <p>Tu carpeta de trabajo con archivos actuales.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <code>Pull Request</code>
+                        <p>Solicitud para fusionar cambios a otro repositorio.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <code>Fork</code>
+                        <p>Copia independiente de un repositorio.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <code>Clone</code>
+                        <p>Copiar un repositorio remoto a local.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <code>Stash</code>
+                        <p>Guardar cambios temporalmente sin commit.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <code>Tag</code>
+                        <p>Marcador de versión específica.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <code>Remote</code>
+                        <p>Servidor donde se guarda el repositorio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Ayuda</span>
+                <h2 class="section-title">Preguntas <span class="highlight">Frecuentes</span></h2>
+            </div>
+            <div class="content-card">
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>&#191;Cuál es la diferencia entre Git y GitHub?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p><strong>Git</strong> es un sistema de control de versiones local (software). <strong>GitHub</strong> es una plataforma en la nube que usa Git para alojar repositorios. Git = herramienta, GitHub = servicio.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>&#191;Puedo usar Git sin GitHub?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sí. Git funciona completamente de forma local. Puedes usar otros servicios como GitLab, Bitbucket, o simplemente guardar tu repositorio en un servidor propio.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>&#191;Cuál es mejor: merge o rebase?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p><strong>Merge</strong>: Guarda el historial exacto, es más seguro para trabajo en equipo. <strong>Rebase</strong>: Crea un historial lineal y limpio, pero nunca debe usarse en ramas públicas/compartidas.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>&#191;Cómo deshago un commit?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p><code>git reset --soft HEAD~1</code> deshace el commit pero guarda los cambios en staging. <code>git reset --hard HEAD~1</code> lo borra todo. Para deshacer un push: <code>git revert abc1234</code>.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>&#191;Qué es un .gitignore y dónde lo pongo?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Un archivo que le dice a Git qué archivos ignorar. Ponlo en la raíz del proyecto. Cada proyecto puede tener su propio .gitignore, y también puedes crear uno global para tu usuario.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>&#191;Git me pide credentials cada vez, qué hago?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Configura SSH (recomendado) o usa un credential helper: <code>git config --global credential.helper cache</code> (guarda en cache por 15 min) o <code>git config --global credential.helper store</code> (guarda permanentemente).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>&#191;Cómo veo el historial de cambios?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p><code>git log</code> muestra el historial completo. <code>git log --oneline</code> lo muestra compactado. <code>git log -p archivo.txt</code> muestra cambios de un archivo específico.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>&#191;Puedo tener múltiples repositorios remotos?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sí. Usa <code>git remote add nombre url</code> para agregar más. Por ejemplo: <code>git remote add upstream url-upstream</code> y <code>git remote add origin url-tu-fork</code>.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>&#191;Qué hacer cuando hay conflictos?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>1. Ejecuta <code>git status</code> para ver los archivos en conflicto. 2. Abre y edita manualmente eliminando los marcadores <<<, ===, >>>. 3. <code>git add archivo</code> y <code>git commit</code>.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>&#191;Cuál es la mejor estructura de ramas?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Para proyectos simples: main + feature branches. Para proyectos grandes: main, develop, feature/*, release/*, hotfix/*. Elige el flujo según tu equipo y frecuencia de deploys.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Git & GitHub - Guía Completa</p>
+            <div class="footer-links">
+                <a href="https://github.com" target="_blank">GitHub</a>
+                <a href="https://git-scm.com" target="_blank">Git</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <button class="to-top" id="toTop" aria-label="Volver arriba">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+    </button>
+    
+    <button class="refresh-btn" id="refreshBtn" aria-label="Refrescar página">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+    </button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
