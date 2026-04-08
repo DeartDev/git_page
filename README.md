@@ -2,7 +2,8 @@
 
 Una guía completa e interactiva sobre Git y GitHub, diseñada para desarrolladores de todos los niveles.
 
-##Visita el Sitio
+## Visita el Sitio
+
 https://deartdev.github.io/git_page/
 
 ## Acerca del Proyecto
