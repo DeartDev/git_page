@@ -116,7 +116,7 @@ a:hover {
 }
 
 .nav-link {
-  padding: 1px 14px;
+  padding: 8px 14px;
   color: var(--text-secondary);
   font-size: 0.9rem;
   border-radius: 8px;
@@ -192,6 +192,15 @@ a:hover {
 
 .nav-dropdown-menu .nav-link::after {
   display: none;
+}
+
+/* Separación Desktop/Mobile */
+.nav-item-mobile {
+  display: none;
+}
+
+.nav-item-desktop {
+  display: flex;
 }
 
 /* Categorías del menú */
@@ -1938,8 +1947,33 @@ a:hover {
     text-align: left;
   }
 
+  /* Ocultar elementos desktop en móvil */
+  .nav-item-desktop {
+    display: none !important;
+  }
+
+  /* Mostrar elementos mobile en móvil */
+  .nav-item-mobile {
+    display: flex;
+  }
+
   /* Ocultar dropdowns en móvil */
   .nav-dropdown {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  /* Desktop: ocultar items mobile */
+  .nav-item-mobile {
+    display: none !important;
+  }
+
+  .nav-item-desktop {
+    display: flex;
+  }
+
+  .nav-category {
     display: none;
   }
 }
