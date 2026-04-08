@@ -202,19 +202,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // ===== DROPDOWN TOGGLE EN MÓVIL =====
-    const dropdownToggles = document.querySelectorAll('.nav-dropdown-toggle');
-    
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', function(e) {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                const dropdown = this.parentElement;
-                dropdown.classList.toggle('active');
-            }
-        });
-    });
-
     // ===== FAQ ACORDEÓN =====
     const faqItems = document.querySelectorAll('.faq-item');
     
